@@ -1,6 +1,12 @@
 main {
-  padding: 2rem 6rem;
+  padding: 2rem 5rem;
+  min-width: 60%;
 }
+
+/* =================== */
+/* step 1 - info form */
+/* ================= */
+
 .title,
 label {
   color: #092951;
@@ -38,11 +44,78 @@ form input {
 }
 
 form input:focus {
-  border: 1px solid #280951c7;
+  border: 2px solid #280951c7;
 }
 
-form input.error {
-  border: 1px solid red;
+
+/* ===================== */
+/* step 2 - select plan */
+/* =================== */
+.plan-card, .toggle-plan{
+  color: #092951;
+  border-radius: 10px;
+}
+
+.plan-card:hover, 
+.plan-card.selected,
+.toggle-plan{
+  background-color: #eef5ff;
+}
+
+.plan-card-container{
+  margin: 3rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.plan-card{
+  width: 30%;
+  padding: 1.3rem;
+  border: 0.75px solid #00000050;
+}
+.plan-card.selected{
+  border: 2px solid #280951c7;
+}
+
+.plan-card:hover{
+  cursor: pointer;
+}
+
+.toggle-plan{
+  min-width: 60%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggler{
+  margin: 0 20px;
+}
+
+.toggler .inner{
+  width: 70px;
+  height: 30px;
+  background-color: #092951;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggler .circle{
+  width: 25px;
+  height: 25px;
+  margin-left: 2px;
+  background-color: #fff;
+}
+
+/* ====================== */
+/* ===== footer ======== */
+/* ==================== */
+footer {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .btn {
@@ -66,13 +139,4 @@ form input.error {
 .next-step.end {
   position: relative;
   left: 74%;
-}
-
-/* ====================== */
-/* ===== footer ======== */
-/* ==================== */
-footer {
-  margin-top: 4rem;
-  display: flex;
-  justify-content: space-between;
 }

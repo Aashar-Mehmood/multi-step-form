@@ -31,6 +31,26 @@ const userData = [
       hasCorrectFormat: false,
     },
   ],
+  [
+    {
+      monthly: {
+        arcade: 9,
+        advance: 12,
+        pro: 15,
+        selected:0
+      },
+      active:true
+    },
+    {
+      yearly: {
+        arcade: 9,
+        advance: 12,
+        pro: 15,
+        selected:0
+      },
+      active:false
+    },
+  ],
 ];
 
 function App() {
