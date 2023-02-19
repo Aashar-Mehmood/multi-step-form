@@ -25,7 +25,7 @@ form label {
   justify-content: space-between;
   padding: 0 2px;
 }
-form label .required {
+form label .required, form label .invalid {
   color: red;
 }
 form input {

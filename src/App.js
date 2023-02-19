@@ -14,15 +14,22 @@ const userData = [
   [
     {
       name:"name",
-      value:""
+      value:"",
+      isFilled: false,
+      hasCorrectFormat:true,
     },
     {
       name:"email",
-      value:""
+      value:"",
+      isFilled: false,
+      hasCorrectFormat:false,
+
     },
     {
       name:"phone",
-      value:""
+      value:"",
+      isFilled: false,
+      hasCorrectFormat:false,
     }
   ]
 ];
