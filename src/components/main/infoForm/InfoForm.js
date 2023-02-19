@@ -1,5 +1,5 @@
 import Header from "../Header";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   currentStepContext,
   incrementStepContext,
@@ -67,6 +67,22 @@ export default function InforForm() {
       data.every((field) => field.isFilled && field.hasCorrectFormat)
     );
   }
+
+  useEffect(() => {
+    if (dataIsValid) {
+      setUserData((prevData) => {
+        return prevData.map((dataArray, index) => {
+          if (index === 0) {
+            return [...data];
+          } else {
+            return dataArray;
+          }
+        });
+      });
+      console.log(userData);
+      incrementStep();
+    }
+  }, [dataIsValid]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -186,7 +202,7 @@ export default function InforForm() {
               {nextBtnClicked &&
                 data[2].isFilled &&
                 !data[2].hasCorrectFormat && (
-                  <span className="invalid">Invalid Format </span>
+                  <span className="invalid">Only numeric values allowed </span>
                 )}
             </label>
             <input
@@ -211,11 +227,7 @@ export default function InforForm() {
           className={currentStep === 1 ? "next-step btn end" : "next-step btn"}
           onClick={() => {
             setNextBtnClicked(true);
-            if (dataIsValid) {
-              incrementStep();
-            } else {
-              validateData();
-            }
+            validateData();
           }}
         >
           {currentStep === 4 ? "Confirm" : "Next Step"}
