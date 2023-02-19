@@ -41,7 +41,6 @@ export default function SelectPlan() {
         </div>
         <div className="change-plan"></div>
       </div>
-
       <footer>
         <button className="go-back btn" onClick={decrementStep}>
           Go Back
