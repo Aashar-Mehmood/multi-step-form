@@ -8,9 +8,7 @@ import {
   userDataContext, 
   setUserDataContext 
 } from "../../../App";
-import arcadeIcon from  "../../../assets/images/icon-arcade.svg";
-import advanceIcon from  "../../../assets/images/icon-advanced.svg";
-import proIcon from  "../../../assets/images/icon-pro.svg";
+
 export default function SelectPlan() {
   const incrementStep = useContext(incrementStepContext);
   const decrementStep = useContext(decrementStepContext);
@@ -24,45 +22,72 @@ export default function SelectPlan() {
   };
 
 
-  const cardData = [
-    {
-      icon: arcadeIcon,
-      label: "Arcade",
-      price: userData[1][0].active ? "$9/mo" : "$90/yr",
-    },
-    {
-      icon: advanceIcon,
-      label: "Advance",
-      price: userData[1][0].active ? "$12/mo" : "$120/yr",
-    },
-    {
-      icon: proIcon,
-      label: "Pro",
-      price: userData[1][0].active ? "$16/mo" : "$150/yr",
-      
-    },
-  ];
-
-  const [planCardData, setPlanCardData] = useState(cardData);  
 
   function handleSelected(index){
-    console.log(index)
+    setUserData(
+      (prevData)=>{
+        return prevData.map((arr,arrIndex)=>{
+          if(arrIndex===1){
+            return arr.map((planObj, objIndex)=>{
+              if(index===objIndex){
+                return{
+                  ...planObj,
+                  isSelected:true,
+                }
+              }else{
+                return {
+                  ...planObj,
+                  isSelected:false
+                }
+              }
+            })
+          }else{
+            return arr;
+          }
+        })
+      }
+    );
   }
+
+  function togglePlan(){
+    setUserData(
+      (prevData)=>{
+        return prevData.map((arr,arrIndex)=>{
+          if(arrIndex===1){
+            return arr.map((planObj)=>{
+              return{
+                ...planObj,
+                isMonthlyActive: !planObj.isMonthlyActive
+              }
+            })
+          }else{
+            return arr;
+          }
+        })
+      }
+    );
+  }
+
 // written in refactoring
   return (
     <div className="container" id="selectPlan">
       <Header {...headerData} />
       <div className="plan">
         <div className="plan-card-container">
-          {planCardData.map((data, index) => {
+          {userData[1].map((data, index) => {
             return <PlanCard {...data} key={nanoid(10)} clickHandler = {()=>handleSelected(index)} />;
           })}
         </div>
         <div className="toggle-plan">
           <span>Monthly</span>
-          <div className="toggler">
+          <div className="toggler" onClick={togglePlan}>
             <div className="inner">
-              <div className="circle"></div>
+              <div 
+              className =
+              {
+                userData[1][0].isMonthlyActive ? "circle" : "circle to-right"
+              }> 
+              </div>
             </div>
           </div>
           <span>Yearly</span>

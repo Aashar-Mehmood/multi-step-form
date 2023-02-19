@@ -1,4 +1,7 @@
-// in branch main
+import arcadeIcon from  "./assets/images/icon-arcade.svg";
+import advanceIcon from  "./assets/images/icon-advanced.svg";
+import proIcon from  "./assets/images/icon-pro.svg";
+
 import Aside from "./components/aside/Aside";
 import Main from "./components/main/Main";
 import "./App.css";
@@ -33,22 +36,34 @@ const userData = [
   ],
   [
     {
-      monthly: {
-        arcade: 9,
-        advance: 12,
-        pro: 15,
-        selected:0
-      },
-      active:true
+      icon:arcadeIcon,
+      name:"Arcade",
+      isSelected:false,
+      isMonthlyActive:true,
+      price:{
+        monthly:9,
+        yearly:90
+      }
     },
     {
-      yearly: {
-        arcade: 9,
-        advance: 12,
-        pro: 15,
-        selected:0
-      },
-      active:false
+      icon:advanceIcon,
+      name:"Advance",
+      isSelected:false,
+      isMonthlyActive:true,
+      price:{
+        monthly:12,
+        yearly:120
+      }
+    },
+    {
+      icon:proIcon,
+      name:"Pro",
+      isMonthlyActive:true,
+      isSelected:false,
+      price:{
+        monthly:15,
+        yearly:150
+      }
     },
   ],
 ];
