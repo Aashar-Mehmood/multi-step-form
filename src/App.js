@@ -13,32 +13,28 @@ export const setUserDataContext = createContext();
 const userData = [
   [
     {
-      name:"name",
-      value:"",
+      name: "name",
+      value: "",
       isFilled: false,
-      hasCorrectFormat:true,
+      hasCorrectFormat: true,
     },
     {
-      name:"email",
-      value:"",
+      name: "email",
+      value: "",
       isFilled: false,
-      hasCorrectFormat:false,
-
+      hasCorrectFormat: false,
     },
     {
-      name:"phone",
-      value:"",
+      name: "phone",
+      value: "",
       isFilled: false,
-      hasCorrectFormat:false,
-    }
-  ]
+      hasCorrectFormat: false,
+    },
+  ],
 ];
 
-
-
-
 function App() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(2);
   const [data, setData] = useState(userData);
 
   const incrementStep = () => {
@@ -58,10 +54,9 @@ function App() {
           <decrementStepContext.Provider value={decrementStep}>
             <userDataContext.Provider value={data}>
               <setUserDataContext.Provider value={setData}>
-              <Aside />
-              <Main />
+                <Aside />
+                <Main />
               </setUserDataContext.Provider>
-              
             </userDataContext.Provider>
           </decrementStepContext.Provider>
         </incrementStepContext.Provider>

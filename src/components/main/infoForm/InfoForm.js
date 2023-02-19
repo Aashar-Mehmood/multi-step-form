@@ -1,17 +1,13 @@
 import Header from "../Header";
 import { useContext, useState, useEffect } from "react";
 import {
-  currentStepContext,
   incrementStepContext,
-  decrementStepContext,
   userDataContext,
   setUserDataContext,
 } from "../../../App";
 
 export default function InforForm() {
-  const currentStep = useContext(currentStepContext);
   const incrementStep = useContext(incrementStepContext);
-  const decrementStep = useContext(decrementStepContext);
 
   const userData = useContext(userDataContext);
   const setUserData = useContext(setUserDataContext);
@@ -217,20 +213,14 @@ export default function InforForm() {
         </form>
       </div>
       <footer>
-        {currentStep > 1 && (
-          <button className="go-back btn" onClick={decrementStep}>
-            Go Back
-          </button>
-        )}
-
         <button
-          className={currentStep === 1 ? "next-step btn end" : "next-step btn"}
+          className="next-step btn end"
           onClick={() => {
             setNextBtnClicked(true);
             validateData();
           }}
         >
-          {currentStep === 4 ? "Confirm" : "Next Step"}
+          Next Step
         </button>
       </footer>
     </div>

@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import Header from "../Header";
-import Footer from "../Footer";
 import PlanCard from "./PlanCard";
 import { nanoid } from "nanoid";
+import { incrementStepContext, decrementStepContext } from "../../../App";
+
 export default function SelectPlan() {
+  const incrementStep = useContext(incrementStepContext);
+  const decrementStep = useContext(decrementStepContext);
+
   const headerData = {
     title: "Select Your Plan",
     description: "You have the option of monthly or yearly billing.",
@@ -37,7 +42,15 @@ export default function SelectPlan() {
         <div className="change-plan"></div>
       </div>
 
-      <Footer />
+      <footer>
+        <button className="go-back btn" onClick={decrementStep}>
+          Go Back
+        </button>
+
+        <button className="next-step btn" onClick={incrementStep}>
+          Next Step
+        </button>
+      </footer>
     </div>
   );
 }
