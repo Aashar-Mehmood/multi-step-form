@@ -53,7 +53,7 @@ const userData = [
   ],
 ];
 
-// now in refactoring
+// now in main
 
 function App() {
   const [currentStep, setCurrentStep] = useState(2);
