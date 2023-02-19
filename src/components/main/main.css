@@ -1,0 +1,78 @@
+main {
+  padding: 2rem 6rem;
+}
+.title,
+label {
+  color: #092951;
+}
+.title {
+  margin-bottom: 0px;
+}
+.description {
+  margin-top: 6px;
+}
+.form {
+  margin-top: 2rem;
+}
+form > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.8rem;
+}
+form label {
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+form label .required {
+  color: red;
+}
+form input {
+  border: 0.75px solid #00000050;
+  text-indent: 8px;
+  border-radius: 6px;
+  height: 42px;
+  color: #092951;
+  outline: none;
+}
+
+form input:focus {
+  border: 1px solid #280951c7;
+}
+
+form input.error {
+  border: 1px solid red;
+}
+
+.btn {
+  height: 46px;
+  width: 120px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.go-back {
+  border: 0.7px solid #00000050;
+}
+
+.next-step {
+  background-color: #092951;
+  color: white;
+  border: none;
+}
+
+.next-step.end {
+  position: relative;
+  left: 74%;
+}
+
+/* ====================== */
+/* ===== footer ======== */
+/* ==================== */
+footer {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
