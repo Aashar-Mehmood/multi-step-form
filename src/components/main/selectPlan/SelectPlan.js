@@ -22,32 +22,12 @@ export default function SelectPlan() {
   };
 
 
-  function unSelectAll(){
 
+  function handleSelected(index){
     setUserData(
       (prevData)=>{
         return prevData.map((arr,arrIndex)=>{
-          if(arrIndex===1){
-            return arr.map((planObj)=>{
-              return{
-                ...planObj,
-                isSelected:false,
-              }
-            })
-          }else{
-            return arr;
-          }
-        })
-      }
-    );
-  }
-
-  function handleSelected(event,index){
-    event.stopPropagation();
-    setUserData(
-      (prevData)=>{
-        return prevData.map((arr,arrIndex)=>{
-          if(arrIndex===1){
+          if(arrIndex===2){
             return arr.map((planObj, objIndex)=>{
               if(index===objIndex){
                 return{
@@ -73,13 +53,8 @@ export default function SelectPlan() {
     setUserData(
       (prevData)=>{
         return prevData.map((arr,arrIndex)=>{
-          if(arrIndex===1){
-            return arr.map((planObj)=>{
-              return{
-                ...planObj,
-                isMonthlyActive: !planObj.isMonthlyActive
-              }
-            })
+          if(arrIndex===0){
+            return {...arr, isMonthlyActive: !arr.isMonthlyActive}
           }else{
             return arr;
           }
@@ -90,12 +65,12 @@ export default function SelectPlan() {
 
 // written in refactoring
   return (
-    <div className="container" id="selectPlan" onClick={unSelectAll}>
+    <div className="container" id="selectPlan" >
       <Header {...headerData} />
       <div className="plan" >
         <div className="plan-card-container">
-          {userData[1].map((data, index) => {
-            return <PlanCard {...data} key={nanoid(10)} clickHandler = {(event)=>handleSelected(event,index)} />;
+          {userData[2].map((data, index) => {
+            return <PlanCard {...data} {...userData[0]} key={nanoid(10)} clickHandler = {()=>handleSelected(index)} />;
           })}
         </div>
         <div className="toggle-plan">
@@ -105,7 +80,7 @@ export default function SelectPlan() {
               <div 
               className =
               {
-                userData[1][0].isMonthlyActive ? "circle" : "circle to-right"
+                userData[0].isMonthlyActive ? "circle" : "circle to-right"
               }> 
               </div>
             </div>

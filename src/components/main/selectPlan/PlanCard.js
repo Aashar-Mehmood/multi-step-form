@@ -1,9 +1,9 @@
 export default function PlanCard(props) {
-  
   const { 
     icon, name, price, 
     isSelected, isMonthlyActive, clickHandler 
   } = props;
+  
   return (
     <div className={isSelected ? "plan-card selected" : "plan-card" }  onClick={clickHandler}>
       <div className="icon">

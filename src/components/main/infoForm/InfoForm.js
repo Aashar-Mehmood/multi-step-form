@@ -14,132 +14,135 @@ export default function InforForm() {
 
   const [dataIsValid, setDataIsValid] = useState(false);
   const [nextBtnClicked, setNextBtnClicked] = useState(false);
-  const [data, setData] = useState(userData[0]);
 
   function validateData() {
-    setData((prevData) =>
-      prevData.map((field) => {
-        if (field.value.length > 0) {
-          if (field.name === "email") {
-            if (
-              /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-                field.value
-              )
-            ) {
+    setUserData((prevData) =>
+      prevData.map((arr, arrIndex) => {
+        if(arrIndex===1){
+          return arr.map((field)=>{
+            if (field.value.length > 0) {
+              if (field.name === "email") {
+                if (
+                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+                    field.value
+                  )
+                ) {
+                  return {
+                    ...field,
+                    hasCorrectFormat: true,
+                  };
+                } else {
+                  return {
+                    ...field,
+                    hasCorrectFormat: false,
+                  };
+                }
+              }
+              if (field.name === "phone") {
+                if (/^[0-9]*$/.test(field.value)) {
+                  return {
+                    ...field,
+                    hasCorrectFormat: true,
+                  };
+                } else {
+                  return {
+                    ...field,
+                    hasCorrectFormat: false,
+                  };
+                }
+              }
               return {
                 ...field,
-                hasCorrectFormat: true,
+                isFilled: true,
               };
             } else {
-              return {
-                ...field,
-                hasCorrectFormat: false,
-              };
+              return field;
             }
-          }
-          if (field.name === "phone") {
-            if (/^[0-9]*$/.test(field.value)) {
-              return {
-                ...field,
-                hasCorrectFormat: true,
-              };
-            } else {
-              return {
-                ...field,
-                hasCorrectFormat: false,
-              };
-            }
-          }
-          return {
-            ...field,
-            isFilled: true,
-          };
-        } else {
-          return field;
+          })
+        }
+        else {
+          return arr;
         }
       })
     );
     setDataIsValid(
-      data.every((field) => field.isFilled && field.hasCorrectFormat)
+      userData[1].every((field) => field.isFilled && field.hasCorrectFormat)
     );
   }
 
   useEffect(() => {
     if (dataIsValid) {
-      setUserData((prevData) => {
-        return prevData.map((dataArray, index) => {
-          if (index === 0) {
-            return [...data];
-          } else {
-            return dataArray;
-          }
-        });
-      });
-      console.log(userData);
       incrementStep();
     }
   }, [dataIsValid]);
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setData((prevData) => {
-      return prevData.map((dataObj) => {
-        if (dataObj.name === name) {
-          if (value.length > 0) {
-            if (name === "email") {
-              if (
-                /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-                  value
-                )
-              ) {
+    setUserData((prevData) => {
+      return prevData.map((arr, arrIndex)=>{
+        if(arrIndex===1){
+          return arr.map((dataObj) => {
+            if (dataObj.name === name) {
+              if (value.length > 0) {
+                if (name === "email") {
+                  if (
+                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+                      value
+                    )
+                  ) {
+                    return {
+                      ...dataObj,
+                      value: value,
+                      isFilled: true,
+                      hasCorrectFormat: true,
+                    };
+                  } else {
+                    return {
+                      ...dataObj,
+                      value: value,
+                      isFilled: true,
+                      hasCorrectFormat: false,
+                    };
+                  }
+                }
+                if (name === "phone") {
+                  if (/^[0-9]*$/.test(value)) {
+                    return {
+                      ...dataObj,
+                      value: value,
+                      isFilled: true,
+                      hasCorrectFormat: true,
+                    };
+                  } else {
+                    return {
+                      ...dataObj,
+                      value: value,
+                      isFilled: true,
+                      hasCorrectFormat: false,
+                    };
+                  }
+                }
                 return {
                   ...dataObj,
                   value: value,
                   isFilled: true,
-                  hasCorrectFormat: true,
                 };
               } else {
                 return {
                   ...dataObj,
                   value: value,
-                  isFilled: true,
-                  hasCorrectFormat: false,
+                  isFilled: false,
                 };
               }
+            } else {
+              return dataObj;
             }
-            if (name === "phone") {
-              if (/^[0-9]*$/.test(value)) {
-                return {
-                  ...dataObj,
-                  value: value,
-                  isFilled: true,
-                  hasCorrectFormat: true,
-                };
-              } else {
-                return {
-                  ...dataObj,
-                  value: value,
-                  isFilled: true,
-                  hasCorrectFormat: false,
-                };
-              }
-            }
-            return {
-              ...dataObj,
-              value: value,
-              isFilled: true,
-            };
-          } else {
-            return {
-              ...dataObj,
-              value: value,
-              isFilled: false,
-            };
-          }
-        } else {
-          return dataObj;
+          })
+        }else{
+          return arr;
         }
-      });
+      })
+      
     });
   }
   const headerData = {
@@ -155,7 +158,7 @@ export default function InforForm() {
           <div>
             <label htmlFor="name">
               Name
-              {nextBtnClicked && !data[0].isFilled && (
+              {nextBtnClicked && !userData[1][0].isFilled && (
                 <span className="required">This field is required</span>
               )}
             </label>
@@ -164,19 +167,19 @@ export default function InforForm() {
               name="name"
               id="name"
               placeholder="e.g Aashar Mehmmod"
-              value={data[0].value}
+              value={userData[1][0].value}
               onChange={(e) => handleChange(e)}
             />
           </div>
           <div>
             <label htmlFor="email">
               Email Address
-              {nextBtnClicked && !data[1].isFilled && (
+              {nextBtnClicked && !userData[1][1].isFilled && (
                 <span className="required">This field is required</span>
               )}
               {nextBtnClicked &&
-                data[1].isFilled &&
-                !data[1].hasCorrectFormat && (
+                userData[1][1].isFilled &&
+                !userData[1][1].hasCorrectFormat && (
                   <span className="invalid">Invalid Email Format </span>
                 )}
             </label>
@@ -185,20 +188,20 @@ export default function InforForm() {
               name="email"
               id="email"
               placeholder="e.g aashar@gmail.com"
-              value={data[1].value}
+              value={userData[1][1].value}
               onChange={(e) => handleChange(e)}
             />
           </div>
           <div>
             <label htmlFor="phone">
               Phone Number
-              {nextBtnClicked && !data[2].isFilled && (
+              {nextBtnClicked && !userData[1][2].isFilled && (
                 <span className="required">This field is required</span>
               )}
               {nextBtnClicked &&
-                data[2].isFilled &&
-                !data[2].hasCorrectFormat && (
-                  <span className="invalid">Only numeric values allowed </span>
+                userData[1][2].isFilled &&
+                !userData[1][2].hasCorrectFormat && (
+                  <span className="invalid">Only Numeric values are allowed</span>
                 )}
             </label>
             <input
@@ -206,7 +209,7 @@ export default function InforForm() {
               name="phone"
               id="phone"
               placeholder="e.g +1 234 5678 9"
-              value={data[2].value}
+              value={userData[1][2].value}
               onChange={(e) => handleChange(e)}
             />
           </div>

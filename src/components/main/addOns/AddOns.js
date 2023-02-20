@@ -1,12 +1,35 @@
 import { useContext } from "react";
-import { incrementStepContext, decrementStepContext } from "../../../App";
+import { nanoid } from "nanoid";
+import { 
+  incrementStepContext, 
+  decrementStepContext,
+  userDataContext,
+  setUserDataContext,
+ } from "../../../App";
+
+import Header from "../Header";
+import AddOn from "./AddOn";
 
 export default function AddOns() {
   const incrementStep = useContext(incrementStepContext);
   const decrementStep = useContext(decrementStepContext);
+  const userData = useContext(userDataContext);
+  const setUserData = useContext(setUserDataContext);
+  function handleSelected(index){
+    console.log(index);
+  }
+  const headerData = {
+    title: "Pick add-ons",
+    description: "Add-ons help enhance your gaming experience.",
+  };
   return (
-    <div>
-      <h2>Add Ons page</h2>
+    <div className="container">
+      <Header {...headerData} />
+      <div className="add-ons-container">
+        {userData[3].map((data, index) => {
+            return <AddOn {...data} {...userData[0]} key={nanoid(10)} clickHandler = {()=>handleSelected(index)} />;
+          })}
+      </div>
       <footer>
         <button className="go-back btn" onClick={decrementStep}>
           Go Back
