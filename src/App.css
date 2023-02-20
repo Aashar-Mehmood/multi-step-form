@@ -1,0 +1,414 @@
+main {
+    padding-bottom: 2rem; 
+    min-width: 60%;
+  }
+  
+  header, .container{
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  aside {
+    background-image: url("./assets/images/bg-sidebar-desktop.svg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    min-width: 30%;
+    padding-bottom: 10rem;
+  }
+  .labels--container {
+    padding: 2.8rem;
+    color: white;
+  }
+  .step--label {
+    display: flex;
+    align-items: center;
+  }
+  .circle {
+    border: 1px solid white;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 20px;
+  }
+  .circle.active {
+    background-color: #bee2fd;
+    color: black;
+    border: none;
+  }
+  .headings p {
+    margin-bottom: 6px;
+    color: hsl(229, 24%, 87%);
+    
+  }
+  .headings h4 {
+    margin-top: 0px;
+  }
+  .headings p,
+  .headings h4 {
+    text-transform: uppercase;
+  }
+  
+  
+  
+  /* =================== */
+  /* step 1 - info form */
+  /* ================= */
+  
+  .title,
+  label {
+    color: #092951;
+  }
+  .title {
+    margin-bottom: 0px;
+  }
+  .description {
+    margin-top: 6px;
+    color: hsl(231, 11%, 63%);
+  }
+  .form {
+    margin-top: 2rem;
+  }
+  form > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.8rem;
+  }
+  form label {
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+  }
+  form label .required, form label .invalid {
+    color: red;
+  }
+  form input {
+    border: 0.75px solid #00000050;
+    text-indent: 8px;
+    border-radius: 6px;
+    height: 42px;
+    color: #092951;
+    outline: none;
+  }
+  
+  form input:focus {
+    border: 2px solid #280951c7;
+  }
+  
+  
+  /* ===================== */
+  /* step 2 - select plan */
+  /* =================== */
+  
+  .plan-card, .toggle-plan{
+    color: #092951;
+    border-radius: 10px;
+  }
+  
+  .plan-card:hover, 
+  .plan-card.selected,
+  .toggle-plan{
+    background-color: #eef5ff;
+  }
+  
+  .plan-card-container{
+    margin: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .plan-card{
+    width: 30%;
+    padding: 1.3rem;
+    border: 0.75px solid #00000050;
+    transition: all 1s ease-in-out;
+  }
+  .plan-card.selected{
+    border: 2px solid #280951c7;
+  }
+  
+  .plan-card:hover{
+    cursor: pointer;
+  }
+  
+  .plan-card .label{
+    margin-bottom: 0;
+  }
+  
+  .plan-card .price{
+    color: hsl(231, 11%, 63%);
+  }
+  
+  .toggle-plan{
+    min-width: 60%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .toggler{
+    margin: 0 20px;
+  }
+  
+  .toggler .inner{
+    width: 70px;
+    height: 30px;
+    background-color: #092951;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .toggler .circle{
+    width: 24px;
+    height: 24px;
+    margin-left: 2px;
+    background-color: #fff;
+    transition: transform 0.6s ease-in-out;
+    transform: translateX(0);
+  }
+  
+  .toggler .circle.to-right{
+    transform: translateX(40px);
+    margin-bottom: 1px;
+  }
+  
+  /* ========================= */
+  /* step 3 - Choose Add Ons  */
+  /* ======================= */
+  .add-ons-container{
+    margin-top: 3rem;
+  }
+  
+  .addOn{
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    margin-bottom: 1.6rem;
+    border: 1px solid #00000050;
+    border-radius: 10px;
+  }
+  .addOn>div{
+    margin-top: 0.4rem;
+    margin-left: 2rem;
+  }
+  
+  .addOn .heading{
+    color: #092951;
+    position: relative;
+  }
+  
+  .addOn:hover{
+    cursor: pointer;
+    background-color: #eef5ff;
+  }
+  .addOn.selected{
+    background-color: #eef5ff;
+    border: 2px solid hsl(243, 100%, 62%);
+  }
+  
+  .addOn .heading{
+    margin: 0;
+  }
+  
+  .addOn .price{
+    margin-left: auto;
+    color: hsl(243, 100%, 62%);
+  }
+  
+  .addOn input{
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* ================================ */
+  /* ===== step 4 - Summary ======== */
+  /* ============================== */
+  
+  .summary{
+    background-color: #eef5ff;
+    padding: 1.4rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+  }
+  
+  .head{
+    border-bottom: 1px solid hsl(231, 11%, 63%);
+    color: #092951;
+  }
+  
+  .body .label{
+    color: hsl(231, 11%, 63%);
+  }
+  
+  .body .price{
+    color: #092951;
+  }
+  
+  .head, .selectedAddOn, .total{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .total h4{
+    color: hsl(243, 100%, 62%);
+  }
+  
+  /* ====================== */
+  /* ===== footer ======== */
+  /* ==================== */
+  footer {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .btn {
+    height: 46px;
+    width: 120px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .go-back {
+    border: 0.7px solid #00000050;
+  }
+  
+  .next-step {
+    background-color: #092951;
+    color: white;
+    border: none;
+  }
+  
+  .next-step.end {
+    margin-left: auto;
+  }
+  
+  .next-step.confirm{
+    background-color: hsl(243, 100%, 62%);
+  }
+  
+  .thanks{
+    padding: 6rem 3rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .thanks p{
+    line-height: 1.4rem;
+    color: hsl(231, 11%, 63%);
+    width: 60%;
+    margin: auto;
+    text-align: center;
+  }
+  
+    @media (max-width: 1200px){
+      body{
+        padding: 2rem;
+      }
+      
+      aside{
+        min-width: 34%; 
+      }
+      main{
+        min-width: 70%;
+      }
+      .labels--container{
+        padding: 1.4rem;
+      }
+      header, .container{
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+    }
+    
+    @media (max-width:1080px) {
+        .thanks{
+            padding: 2rem;
+        }
+    }
+
+    @media (max-width: 900px){
+        .plan-card-container{
+            flex-direction: column;
+            margin: 1rem 0;
+        }
+        .plan-card{
+            width: 80%;
+            margin: 1rem 0;
+        }
+        .toggle-plan, footer{
+           min-width: 80%;
+        }
+        .thanks p{
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 800px){
+      .app{
+        flex-direction: column;
+        padding-bottom: 0px;
+      }
+      aside, main{
+        width: 100%;
+      }
+      aside{
+        padding-bottom: 0rem;
+      }
+      header, .container{
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  
+    @media (max-width: 520px){
+      body, .app{
+        padding: 1rem;
+      }
+      .labels--container{
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .labels--container .headings{
+        display: none;
+      } 
+      form label{
+        flex-direction: column;
+      }
+      .addOn{
+        padding: 0.8rem;
+        flex-direction: column;
+      }
+      .addOn>div{
+        margin-left: 1rem;
+      }
+      .addOn .price{
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width:380px) {
+        .toggler .inner{
+            width: 46px;
+            height: 20px;
+        }
+        .toggler .circle{
+            width: 16px;
+            height: 16px;
+        }
+        .btn{
+            height: 36px;
+            width: 100px;
+        }
+        .thanks{
+            padding: 0.8rem;
+        }
+    }

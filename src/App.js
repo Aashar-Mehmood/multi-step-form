@@ -107,7 +107,7 @@ function App() {
 
   const incrementStep = () => {
     setCurrentStep((prevStep) => {
-      return prevStep <= 3 ? prevStep + 1 : 1;
+      return prevStep <= 4 ? prevStep + 1 : 1;
     });
   };
   const decrementStep = () => {

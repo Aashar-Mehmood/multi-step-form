@@ -1,4 +1,3 @@
-import "./aside.css";
 import labelsData from "./LabelsData";
 import StepLabels from "./StepLabels";
 import { nanoid } from "nanoid";

@@ -5,6 +5,7 @@ import {
   decrementStepContext,
   userDataContext
 } from "../../../App";
+import { nanoid } from "nanoid";
 export default function Summary() {
   let total = 0;
   const incrementStep = useContext(incrementStepContext);
@@ -18,7 +19,7 @@ export default function Summary() {
     <div className="container">
       <Header {...headerData}/>
       <div className="summary">
-        <div className="head">
+        
           {
             userData[2].map((planObj)=>{
               if(planObj.isSelected){
@@ -28,22 +29,22 @@ export default function Summary() {
                   total += planObj.price.yearly;
                 }
                 return (
-                <>
+                <div className="head" key={nanoid(10)}>
                   <h5 className="plan">
-                    {planObj.name}
+                    {userData[0].isMonthlyActive ? `${planObj.name} (Monthly)` : `${planObj.name} (Yearly)`}
                     </h5>
                   <h5 className="price">
                     {userData[0].isMonthlyActive ? `$${planObj.price.monthly}/mo` : `$${planObj.price.monthly}/yr`}
                   </h5>
-                </>
+                </div>
                 )
               }
             })
           }
           
-        </div>
+        
         <div className="body">
-          <div className="selectedAddOn">
+          
           {
             userData[3].map((addOnObj)=>{
               if(addOnObj.isSelected){
@@ -53,27 +54,27 @@ export default function Summary() {
                   total += addOnObj.price.yearly;
                 }
                 return (
-                <>
+                <div key={nanoid(10)} className="selectedAddOn">
                   <p className="label">
                     {addOnObj.heading}
                     </p>
                   <p className="price">
                     {userData[0].isMonthlyActive ? `+$${addOnObj.price.monthly}/mo` : `+$${addOnObj.price.monthly}/yr`}
                   </p>
-                </>
+                </div>
                 )
               }
             })
           }
            
-          </div>
+          
         </div>
         <div className="total">
           <p className="label">
             Total ({userData[0].isMonthlyActive ? 'per month' : 'per year'})
           </p>
           <h4>
-            {total}
+            {userData[0].isMonthlyActive ? `$${total}/mo` : `$${total}/yr`}
           </h4>
         </div>
       </div>
@@ -82,7 +83,7 @@ export default function Summary() {
           Go Back
         </button>
 
-        <button className="next-step btn" onClick={incrementStep}>
+        <button className="next-step btn confirm" onClick={incrementStep}>
           Confirm
         </button>
       </footer>
