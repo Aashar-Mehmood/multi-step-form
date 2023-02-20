@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Header from "../Header";
 import PlanCard from "./PlanCard";
 import { nanoid } from "nanoid";
@@ -22,8 +22,28 @@ export default function SelectPlan() {
   };
 
 
+  function unSelectAll(){
 
-  function handleSelected(index){
+    setUserData(
+      (prevData)=>{
+        return prevData.map((arr,arrIndex)=>{
+          if(arrIndex===1){
+            return arr.map((planObj)=>{
+              return{
+                ...planObj,
+                isSelected:false,
+              }
+            })
+          }else{
+            return arr;
+          }
+        })
+      }
+    );
+  }
+
+  function handleSelected(event,index){
+    event.stopPropagation();
     setUserData(
       (prevData)=>{
         return prevData.map((arr,arrIndex)=>{
@@ -70,12 +90,12 @@ export default function SelectPlan() {
 
 // written in refactoring
   return (
-    <div className="container" id="selectPlan">
+    <div className="container" id="selectPlan" onClick={unSelectAll}>
       <Header {...headerData} />
-      <div className="plan">
+      <div className="plan" >
         <div className="plan-card-container">
           {userData[1].map((data, index) => {
-            return <PlanCard {...data} key={nanoid(10)} clickHandler = {()=>handleSelected(index)} />;
+            return <PlanCard {...data} key={nanoid(10)} clickHandler = {(event)=>handleSelected(event,index)} />;
           })}
         </div>
         <div className="toggle-plan">

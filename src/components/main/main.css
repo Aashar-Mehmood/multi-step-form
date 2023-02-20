@@ -1,6 +1,11 @@
 main {
-  padding: 2rem 5rem;
+  padding: 2rem 0rem;
   min-width: 60%;
+}
+
+header, .container{
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 /* =================== */
@@ -113,7 +118,7 @@ form input:focus {
 }
 
 .toggler .circle.to-right{
-  transform: translateX(39px);
+  transform: translateX(40px);
   margin-bottom: 1px;
 }
 
