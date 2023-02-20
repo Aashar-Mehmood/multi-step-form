@@ -1,0 +1,24 @@
+.alert {    
+    padding: 0.8rem;
+    background-color: #f8d7da;
+    color: black;
+    border: 1px solid #f5c6cb;
+    border-radius: 0.25rem;
+    animation: fade-in 0.5s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .close{
+    cursor: pointer;
+    padding: 0 1rem;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

@@ -30,6 +30,8 @@ aside {
 }
 .headings p {
   margin-bottom: 6px;
+  color: hsl(229, 24%, 87%);
+  
 }
 .headings h4 {
   margin-top: 0px;

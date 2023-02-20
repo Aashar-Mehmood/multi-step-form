@@ -21,6 +21,7 @@ label {
 }
 .description {
   margin-top: 6px;
+  color: hsl(231, 11%, 63%);
 }
 .form {
   margin-top: 2rem;
@@ -87,6 +88,14 @@ form input:focus {
   cursor: pointer;
 }
 
+.plan-card .label{
+  margin-bottom: 0;
+}
+
+.plan-card .price{
+  color: hsl(231, 11%, 63%);
+}
+
 .toggle-plan{
   min-width: 60%;
   height: 50px;
@@ -126,8 +135,50 @@ form input:focus {
 /* ========================= */
 /* step 3 - Choose Add Ons  */
 /* ======================= */
+.add-ons-container{
+  margin-top: 3rem;
+}
 
+.addOn{
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  margin-bottom: 1.6rem;
+  border: 1px solid #00000050;
+  border-radius: 10px;
+}
+.addOn>div{
+  margin-top: 0.4rem;
+  margin-left: 2rem;
+}
 
+.addOn .heading{
+  color: #092951;
+  position: relative;
+}
+
+.addOn:hover{
+  cursor: pointer;
+  background-color: #eef5ff;
+}
+.addOn.selected{
+  background-color: #eef5ff;
+  border: 2px solid hsl(243, 100%, 62%);
+}
+
+.addOn .heading{
+  margin: 0;
+}
+
+.addOn .price{
+  margin-left: auto;
+  color: hsl(243, 100%, 62%);
+}
+
+.addOn input{
+  width: 24px;
+  height: 24px;
+}
 
 
 /* ====================== */
