@@ -102,7 +102,7 @@ const userData = [
 // now in main
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
   const [data, setData] = useState(userData);
 
   const incrementStep = () => {
