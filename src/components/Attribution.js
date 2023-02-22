@@ -1,8 +1,7 @@
 export default function Attribution() {
-  // now in attribution branch
   return (
     <div class="attribution">
-      Challenge by
+      Challenge by &nbsp;
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
         Frontend Mentor
       </a>

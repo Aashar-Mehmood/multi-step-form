@@ -4,6 +4,8 @@ import proIcon from "./assets/images/icon-pro.svg";
 
 import Aside from "./components/aside/Aside";
 import Main from "./components/main/Main";
+import Attribution from "./components/Attribution";
+
 import "./App.css";
 import { useState, createContext } from "react";
 export const currentStepContext = createContext();
@@ -116,6 +118,7 @@ function App() {
     });
   };
   return (
+    <>
     <div className="app">
       <currentStepContext.Provider value={currentStep}>
         <incrementStepContext.Provider value={incrementStep}>
@@ -130,6 +133,8 @@ function App() {
         </incrementStepContext.Provider>
       </currentStepContext.Provider>
     </div>
+    <Attribution/>
+    </>
   );
 }
 
