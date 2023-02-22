@@ -2,7 +2,7 @@
   "name": "multi-step-form",
   "version": "0.1.0",
   "private": false,
-  "home":"https://aashar-mehmood.github.io/multi-step-form/",
+  "home":".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
