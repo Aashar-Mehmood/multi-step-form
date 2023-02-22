@@ -388,7 +388,9 @@ main {
         flex-direction: column;
       }
       .addOn>div{
-        margin-left: 1rem;
+        margin-left: 0rem;
+        margin-top: 1rem;
+        text-align: center;
       }
       .addOn .price{
         margin-left: 0;
