@@ -18,7 +18,6 @@ export default function SelectPlan() {
   const userData = useContext(userDataContext);
   const setUserData = useContext(setUserDataContext);
 
-  const [anyPlanSelected, setAnyPlanSelected] = useState(false);
   const [alert, setAlert] = useState(false);
   const headerData = {
     title: "Select Your Plan",
@@ -62,7 +61,9 @@ export default function SelectPlan() {
   }
 
   function checkAnyPlanSelected() {
-    if(anyPlanSelected){
+    if(
+      userData[2].some(planObj=>planObj.isSelected)
+    ){
       incrementStep();
     }else{
       setAlert(true);
@@ -88,7 +89,7 @@ export default function SelectPlan() {
                 {...userData[0]}
                 key={nanoid(10)}
                 clickHandler={() =>{
-                  setAnyPlanSelected(true);
+                  
                   return handleSelected(index)
                 }
                 }

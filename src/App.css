@@ -266,6 +266,21 @@ main {
     border-bottom: 1px solid hsl(231, 11%, 63%);
     color: #092951;
   }
+
+  .head > div{
+    margin-bottom: 0.5rem;
+  }
+  
+  .head .plan, .head .price{
+    margin: 0px;
+  }
+  
+  .summary .plan-toggler{
+    cursor: pointer;
+    text-decoration: underline;
+    margin: 0px;
+    padding: 10px 10px 10px 0px;
+  }
   
   .body .label{
     color: hsl(231, 11%, 63%);
@@ -402,15 +417,38 @@ main {
         width: 100%;
       }
       aside{
+        background-position: bottom;
         padding-bottom: 0rem;
       }
       header, .container{
         padding-left: 10px;
         padding-right: 10px;
       }
+      .plan-card{
+        display: grid;
+        grid-template-columns: 0.4fr auto;
+        grid-column-gap: 1.2rem;
+        padding: 1rem;
+      }
+      .plan-card .label{
+        margin-top: 0.5rem;
+      }
+      .plan-card p{
+        margin: 6px 0;
+      }
+      .icon{
+        grid-row: 1 / 4;
+        align-self: center;
+      }
     }
   
     @media (max-width: 520px){
+
+
+      html{
+        font-size: 0.8rem;
+      }
+
       body, .app{
         padding: 1rem;
       }
@@ -425,7 +463,7 @@ main {
         flex-direction: column;
       }
       .addOn{
-        padding: 0.8rem;
+        padding: 1rem;
         flex-direction: column;
       }
       .addOn>div{
@@ -434,19 +472,27 @@ main {
         text-align: center;
       }
       .addOn .price{
-        margin-left: 0;
+        margin: 0;
+      }
+      .btn{
+        font-weight: normal;
       }
     }
 
     @media (max-width:380px) {
-        .toggler .inner{
-            width: 46px;
-            height: 20px;
-        }
-        .toggler .circle{
-            width: 16px;
-            height: 16px;
-        }
+      .toggler .inner{
+        width: 46px;
+        height: 20px;
+      }
+      .toggler .circle{
+        width: 16px;
+        height: 16px;
+      }
+      
+      .toggler .circle.to-right{
+        transform: translateX(26px);
+        margin-bottom:0px;
+      }
         .btn{
             height: 36px;
             width: 100px;

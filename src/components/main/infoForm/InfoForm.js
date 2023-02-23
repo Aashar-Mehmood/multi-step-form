@@ -157,7 +157,7 @@ export default function InforForm() {
         <form>
           <div>
             <label htmlFor="name">
-              Name
+              Name 
               {nextBtnClicked && !userData[1][0].isFilled && (
                 <span className="required">This field is required</span>
               )}

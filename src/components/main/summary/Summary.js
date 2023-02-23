@@ -3,7 +3,8 @@ import Header from "../Header";
 import { 
   incrementStepContext, 
   decrementStepContext,
-  userDataContext
+  userDataContext,
+  setUserDataContext
 } from "../../../App";
 import { nanoid } from "nanoid";
 export default function Summary() {
@@ -11,11 +12,25 @@ export default function Summary() {
   const incrementStep = useContext(incrementStepContext);
   const decrementStep = useContext(decrementStepContext);
   const userData = useContext(userDataContext);
+  const setUserData = useContext(setUserDataContext);
   const headerData = {
     title: "Finishing up",
     description: "Double-check everything looks OK before confriming.",
   };
+  function togglePlan() {
+    setUserData((prevData) => {
+      return prevData.map((arr, arrIndex) => {
+        if (arrIndex === 0) {
+          return { ...arr, isMonthlyActive: !arr.isMonthlyActive };
+        } else {
+          return arr;
+        }
+      });
+    });
+  }
+
   return (
+
     <div className="container">
       <Header {...headerData}/>
       <div className="summary">
@@ -30,11 +45,15 @@ export default function Summary() {
                 }
                 return (
                 <div className="head" key={nanoid(10)}>
-                  <h5 className="plan">
-                    {userData[0].isMonthlyActive ? `${planObj.name} (Monthly)` : `${planObj.name} (Yearly)`}
-                    </h5>
+                  <div>
+                    <h5 className="plan">
+                      {userData[0].isMonthlyActive ? `${planObj.name} (Monthly)` : `${planObj.name} (Yearly)`}
+                      </h5>
+                      <p className="plan-toggler" onClick={togglePlan}>Change</p>
+                  </div>
+
                   <h5 className="price">
-                    {userData[0].isMonthlyActive ? `$${planObj.price.monthly}/mo` : `$${planObj.price.monthly}/yr`}
+                    {userData[0].isMonthlyActive ? `$${planObj.price.monthly}/mo` : `$${planObj.price.yearly}/yr`}
                   </h5>
                 </div>
                 )
@@ -59,7 +78,7 @@ export default function Summary() {
                     {addOnObj.heading}
                     </p>
                   <p className="price">
-                    {userData[0].isMonthlyActive ? `+$${addOnObj.price.monthly}/mo` : `+$${addOnObj.price.monthly}/yr`}
+                    {userData[0].isMonthlyActive ? `+$${addOnObj.price.monthly}/mo` : `+$${addOnObj.price.yearly}/yr`}
                   </p>
                 </div>
                 )
