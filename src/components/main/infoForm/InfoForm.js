@@ -6,8 +6,6 @@ export default function InforForm() {
   const { incrementStep } = useContext(stepContext);
   const { userData, setUserData } = useContext(userDataContext);
 
-  console.log(userData);
-
   const [dataIsValid, setDataIsValid] = useState(false);
   const [nextBtnClicked, setNextBtnClicked] = useState(false);
 
