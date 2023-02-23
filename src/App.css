@@ -419,6 +419,8 @@ main {
       aside{
         background-position: bottom;
         padding-bottom: 0rem;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
       }
       header, .container{
         padding-left: 10px;
@@ -440,10 +442,15 @@ main {
         grid-row: 1 / 4;
         align-self: center;
       }
+
+    }
+    @media (max-width:600px) {
+      .addOn>div{
+        margin-left: 1rem;
+      }
     }
   
     @media (max-width: 520px){
-
 
       html{
         font-size: 0.8rem;
