@@ -1,16 +1,12 @@
 import Header from "../Header";
 import { useContext, useState, useEffect } from "react";
-import {
-  incrementStepContext,
-  userDataContext,
-  setUserDataContext,
-} from "../../../App";
+import { stepContext, userDataContext } from "../../../App";
 
 export default function InforForm() {
-  const incrementStep = useContext(incrementStepContext);
+  const { incrementStep } = useContext(stepContext);
+  const { userData, setUserData } = useContext(userDataContext);
 
-  const userData = useContext(userDataContext);
-  const setUserData = useContext(setUserDataContext);
+  console.log(userData);
 
   const [dataIsValid, setDataIsValid] = useState(false);
   const [nextBtnClicked, setNextBtnClicked] = useState(false);
@@ -18,8 +14,8 @@ export default function InforForm() {
   function validateData() {
     setUserData((prevData) =>
       prevData.map((arr, arrIndex) => {
-        if(arrIndex===1){
-          return arr.map((field)=>{
+        if (arrIndex === 1) {
+          return arr.map((field) => {
             if (field.value.length > 0) {
               if (field.name === "email") {
                 if (
@@ -58,9 +54,8 @@ export default function InforForm() {
             } else {
               return field;
             }
-          })
-        }
-        else {
+          });
+        } else {
           return arr;
         }
       })
@@ -79,8 +74,8 @@ export default function InforForm() {
   function handleChange(e) {
     const { name, value } = e.target;
     setUserData((prevData) => {
-      return prevData.map((arr, arrIndex)=>{
-        if(arrIndex===1){
+      return prevData.map((arr, arrIndex) => {
+        if (arrIndex === 1) {
           return arr.map((dataObj) => {
             if (dataObj.name === name) {
               if (value.length > 0) {
@@ -137,12 +132,11 @@ export default function InforForm() {
             } else {
               return dataObj;
             }
-          })
-        }else{
+          });
+        } else {
           return arr;
         }
-      })
-      
+      });
     });
   }
   const headerData = {
@@ -157,7 +151,7 @@ export default function InforForm() {
         <form>
           <div>
             <label htmlFor="name">
-              Name 
+              Name
               {nextBtnClicked && !userData[1][0].isFilled && (
                 <span className="required">This field is required</span>
               )}
@@ -201,7 +195,9 @@ export default function InforForm() {
               {nextBtnClicked &&
                 userData[1][2].isFilled &&
                 !userData[1][2].hasCorrectFormat && (
-                  <span className="invalid">Only Numeric values are allowed</span>
+                  <span className="invalid">
+                    Only Numeric values are allowed
+                  </span>
                 )}
             </label>
             <input

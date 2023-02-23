@@ -8,19 +8,16 @@ import Attribution from "./components/Attribution";
 
 import "./App.css";
 import { useState, createContext } from "react";
-export const currentStepContext = createContext();
-export const incrementStepContext = createContext();
-export const decrementStepContext = createContext();
 
+export const stepContext = createContext();
 export const userDataContext = createContext();
-export const setUserDataContext = createContext();
+
 // user data
 const userData = [
-  
-    {
-      isMonthlyActive: true,
-    },
-  
+  {
+    isMonthlyActive: true,
+  },
+
   [
     {
       name: "name",
@@ -119,21 +116,19 @@ function App() {
   };
   return (
     <>
-    <div className="app">
-      <currentStepContext.Provider value={currentStep}>
-        <incrementStepContext.Provider value={incrementStep}>
-          <decrementStepContext.Provider value={decrementStep}>
-            <userDataContext.Provider value={data}>
-              <setUserDataContext.Provider value={setData}>
-                <Aside />
-                <Main />
-              </setUserDataContext.Provider>
-            </userDataContext.Provider>
-          </decrementStepContext.Provider>
-        </incrementStepContext.Provider>
-      </currentStepContext.Provider>
-    </div>
-    <Attribution/>
+      <div className="app">
+        <userDataContext.Provider
+          value={{ userData: data, setUserData: setData }}
+        >
+          <stepContext.Provider
+            value={{ currentStep, incrementStep, decrementStep }}
+          >
+            <Aside />
+            <Main />
+          </stepContext.Provider>
+        </userDataContext.Provider>
+      </div>
+      <Attribution />
     </>
   );
 }

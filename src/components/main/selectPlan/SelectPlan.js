@@ -4,19 +4,11 @@ import Header from "../Header";
 import PlanCard from "./PlanCard";
 import Alert from "../../alert/Alert";
 import { nanoid } from "nanoid";
-import {
-  incrementStepContext,
-  decrementStepContext,
-  userDataContext,
-  setUserDataContext,
-} from "../../../App";
+import { userDataContext, stepContext } from "../../../App";
 
 export default function SelectPlan() {
-  const incrementStep = useContext(incrementStepContext);
-  const decrementStep = useContext(decrementStepContext);
-
-  const userData = useContext(userDataContext);
-  const setUserData = useContext(setUserDataContext);
+  const { incrementStep, decrementStep } = useContext(stepContext);
+  const { userData, setUserData } = useContext(userDataContext);
 
   const [alert, setAlert] = useState(false);
   const headerData = {
@@ -61,24 +53,20 @@ export default function SelectPlan() {
   }
 
   function checkAnyPlanSelected() {
-    if(
-      userData[2].some(planObj=>planObj.isSelected)
-    ){
+    if (userData[2].some((planObj) => planObj.isSelected)) {
       incrementStep();
-    }else{
+    } else {
       setAlert(true);
     }
   }
-  
 
   // written in refactoring
   return (
     <div className="container" id="selectPlan">
-      {
-        alert && 
-        <Alert text="Choose Your Plan !" handleClick={()=>setAlert(false)} />
-      }
-    
+      {alert && (
+        <Alert text="Choose Your Plan !" handleClick={() => setAlert(false)} />
+      )}
+
       <Header {...headerData} />
       <div className="plan">
         <div className="plan-card-container">
@@ -88,11 +76,9 @@ export default function SelectPlan() {
                 {...data}
                 {...userData[0]}
                 key={nanoid(10)}
-                clickHandler={() =>{
-                  
-                  return handleSelected(index)
-                }
-                }
+                clickHandler={() => {
+                  return handleSelected(index);
+                }}
               />
             );
           })}

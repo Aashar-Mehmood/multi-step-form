@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { currentStepContext } from "../../App";
+import { stepContext } from "../../App";
 export default function StepLabels(props) {
-  let currentStep = useContext(currentStepContext);
+  const { currentStep } = useContext(stepContext);
   const { id, small_heading, large_heading } = props;
   const classes = currentStep === id ? "circle active" : "circle";
   return (

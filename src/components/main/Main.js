@@ -4,10 +4,10 @@ import SelectPlan from "./selectPlan/SelectPlan";
 import AddOns from "./addOns/AddOns";
 import Summary from "./summary/Summary";
 import Thanks from "./thanks/Thanks";
-import { currentStepContext } from "../../App";
+import { stepContext } from "../../App";
 
 export default function Main() {
-  const currentStep = useContext(currentStepContext);
+  const { currentStep } = useContext(stepContext);
 
   let MainComponet;
   switch (currentStep) {
